@@ -427,7 +427,7 @@ class AnswerView(APIView, Paginate):
             'postId': post.id,
             'userId': post.user.id,
             'userName': post.user.get_full_name(),
-            'userImage': post.user.profile.image.url,
+            # 'userImage': post.user.profile.image.url,
             'text': post.text,
             'image': ''
         })
