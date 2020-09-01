@@ -7,10 +7,10 @@ Fail = settings.FAIL
 
 def authorization_required(function):
     def wrap(request, *args, **kwargs):
-        uid = request.query_params.get('userId')
-        if not (uid and uid.isnumeric()):
-            raise serializers.ValidationError("userId is required in param")
-        elif request.user.is_authenticated and request.user.id == int(uid):
+        # uid = request.query_params.get('userId')
+        # if not (uid and uid.isnumeric()):
+        #     raise serializers.ValidationError("userId is required in param")
+        if request.user.is_authenticated :
             print("hello")
             return function(request, *args, **kwargs)
         else:
