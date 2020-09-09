@@ -75,9 +75,9 @@ class Paginate:
         if int(current_page) <= self.count:
             self.page_query = page_object.page(current_page)
             if self.page_query.has_next():
-                self.next = page_query.next_page_num()
+                self.next = self.page_query.next_page_num()
             if self.page_query.has_previous():
-                self.previous = page_query.previous_page_num()
+                self.previous = self.page_query.previous_page_num()
         data = {
             'count': self.count,
             # 'next': self.next,
