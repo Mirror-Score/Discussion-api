@@ -4,7 +4,7 @@
     "repository": "https://github.com/namantam1/mirrorscore-android",
     "keywords": ["django", "API", "discussion wall"],
     "scripts": {
-        "postdeploy": ["python manage.py migrate", "python manage.py mkdb"]
+        "postdeploy": "python manage.py migrate && python manage.py mkdb"
     },
     "env": {
         "SECRET_KEY": {

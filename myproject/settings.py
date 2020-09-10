@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 from datetime import timedelta
+import dj_database_url
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -27,7 +28,7 @@ SECRET_KEY = '8z467-3rq#131ilv0c_ngd38!7@c@zc)5-m3-jny7en5vgs6ne'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['mirrorscore-android.herokuapp.com', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -92,22 +93,25 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'khqmovke',
-        'USER': 'khqmovke',
-        'PASSWORD': 'hcjyoUU3vnCqy88lR1No-vLzs7XwnsBF',
-        'HOST': 'lallah.db.elephantsql.com',
-        'PORT': '5432',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'khqmovke',
+#         'USER': 'khqmovke',
+#         'PASSWORD': 'hcjyoUU3vnCqy88lR1No-vLzs7XwnsBF',
+#         'HOST': 'lallah.db.elephantsql.com',
+#         'PORT': '5432',
+#     }
+# }
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+DATABASES = {
+    'default': dj_database_url.config(conn_max_age=600)
+}
 
 
 # Password validation
