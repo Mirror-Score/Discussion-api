@@ -8,12 +8,12 @@ class Command(BaseCommand):
         login_method = ['email','google','facebook']
         klass = ['8th', '9th', '10th']
         board = ['CBSE', 'Other']
-        subject = ['Methematics']
+        subject = ['Mathematics']
         user = [
-            ['mirrorscore','student1','password123',False,'student1@gmail.com','student1'],
-            ['mirrorscore','student2','password123',False,'student2@gmail.com','student2'],
-            ['mirrorscore','student3','password123',False,'student3@gmail.com','student3'],
-            ['mirrorscore','teacher','password123',False,'teacher@gmail.com','teacher'],
+            ['mirrorscore','student1','password123',False,'student1@gmail.com','student1',1,1,1],
+            ['mirrorscore','student2','password123',False,'student2@gmail.com','student2',2,1,1],
+            ['mirrorscore','student3','password123',False,'student3@gmail.com','student3',3,2,1],
+            ['mirrorscore','teacher','password123',False,'teacher@gmail.com','teacher',1,1,1],
             ['mirrorscore','admin','password123',True,'admin@gmail.com','admin'],
         ]
         for method in login_method:
@@ -49,6 +49,13 @@ class Command(BaseCommand):
             )
             u.set_password(k[2])
             u.save()
+            if u.is_superuser:
+                Student.objects.create(
+                    user=u,
+                    studentclass=k[6],
+                    studentboard=k[7],
+                    subject=k[8]
+                )
             print("created user {}".format(k[4]))
 
         

@@ -261,6 +261,8 @@ class PostView(APIView,Paginate):
         data = request.data
         post_id = data.get('postId')
         if not post_id:
+            post_id = request.query_params.get('postId')
+        if not post_id:
             raise serializers.ValidationError("postId is required")
         post = Post.objects.filter(id=post_id, user=request.user)
         if post:
@@ -541,6 +543,8 @@ class AnswerView(APIView, Paginate):
     def delete(self, request, *args, **kwargs):
         data = request.data
         answer_id = data.get('answerId')
+        if not answer_id:
+            answer_id = request.query_params.get('answerId')
         if not answer_id:
             raise serializers.ValidationError("answerId is required.")
         answer = Answer.objects.filter(id=answer_id,user=request.user)
