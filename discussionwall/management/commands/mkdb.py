@@ -52,9 +52,9 @@ class Command(BaseCommand):
             if not u.is_superuser:
                 s = Student(
                     user=u,
-                    studentclass=user[6],
-                    studentboard=user[7],
-                    subject=user[8]
+                    studentclass=StudentClass.objects.get(id=user[6]),
+                    studentboard=StudentBoard.objects.get(id=user[7]),
+                    subject=subject.object.get(id=user[8])
                 )
                 s.save()
             print("created user {}".format(user[4]))
