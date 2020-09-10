@@ -50,12 +50,13 @@ class Command(BaseCommand):
             u.set_password(user[2])
             u.save()
             if u.is_superuser:
-                Student.objects.create(
+                s = Student(
                     user=u,
                     studentclass=user[6],
                     studentboard=user[7],
                     subject=user[8]
                 )
+                s.save()
             print("created user {}".format(user[4]))
 
         
