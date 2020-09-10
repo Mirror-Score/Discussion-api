@@ -54,7 +54,7 @@ class Command(BaseCommand):
                     user=u,
                     studentclass=StudentClass.objects.get(id=user[6]),
                     studentboard=StudentBoard.objects.get(id=user[7]),
-                    subject=subject.objects.get(id=user[8])
+                    subject=Subject.objects.get(id=user[8])
                 )
                 s.save()
             print("created user {}".format(user[4]))
