@@ -9,7 +9,7 @@ class Command(BaseCommand):
         klass = ['8th', '9th', '10th']
         board = ['CBSE', 'Other']
         subject = ['Mathematics']
-        user = [
+        users = [
             ['mirrorscore','student1','password123',False,'student1@gmail.com','student1',1,1,1],
             ['mirrorscore','student2','password123',False,'student2@gmail.com','student2',2,1,1],
             ['mirrorscore','student3','password123',False,'student3@gmail.com','student3',3,2,1],
@@ -38,24 +38,24 @@ class Command(BaseCommand):
 
         print('------------------------------------------------------------')
         
-        for k in user:
+        for user in users:
             u = MyUser(
-                first_name = k[0],
-                last_name = k[1],
-                email = k[4],
-                is_superuser = k[3],
-                is_staff = k[3],
-                username = k[5]
+                first_name = user[0],
+                last_name = user[1],
+                email = user[4],
+                is_superuser = user[3],
+                is_staff = user[3],
+                username = user[5]
             )
-            u.set_password(k[2])
+            u.set_password(user[2])
             u.save()
             if u.is_superuser:
                 Student.objects.create(
                     user=u,
-                    studentclass=k[6],
-                    studentboard=k[7],
-                    subject=k[8]
+                    studentclass=user[6],
+                    studentboard=user[7],
+                    subject=user[8]
                 )
-            print("created user {}".format(k[4]))
+            print("created user {}".format(user[4]))
 
         
