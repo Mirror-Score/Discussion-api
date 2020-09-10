@@ -414,6 +414,8 @@ class AnswerView(APIView, Paginate):
         data = request.data
         user = request.user
         post_id = data.get('postId')
+        if not post_id:
+            post_id = query_params.get('postId')
         # parent_id = data.get('parentId')
         if not post_id:
             raise serializers.ValidationError("postId is required.")
@@ -667,6 +669,8 @@ class AnswerDetailView(APIView):
         data = request.data
         user = request.user
         answer_id = data.get("answerId")
+        if not answer_id:
+            answer_id = query_params.get('answerId')
         if not answer_id:
             raise serializers.ValidationError("answerId is required.")
         answer = Answer.objects.filter(id=answer_id).first()
