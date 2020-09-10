@@ -49,7 +49,7 @@ class Command(BaseCommand):
             )
             u.set_password(user[2])
             u.save()
-            if u.is_superuser:
+            if not u.is_superuser:
                 s = Student(
                     user=u,
                     studentclass=user[6],
