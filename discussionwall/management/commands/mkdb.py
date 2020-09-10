@@ -10,11 +10,11 @@ class Command(BaseCommand):
         board = ['CBSE', 'Other']
         subject = ['Methematics']
         user = [
-            ['mirrorscore','student1','password',False,'student1@gmail.com','student1'],
-            ['mirrorscore','student2','password',False,'student2@gmail.com','student2'],
-            ['mirrorscore','student3','password',False,'student3@gmail.com','student3'],
-            ['mirrorscore','teacher','password',False,'teacher@gmail.com','teacher'],
-            ['mirrorscore','admin','password',True,'admin@gmail.com','admin'],
+            ['mirrorscore','student1','password123',False,'student1@gmail.com','student1'],
+            ['mirrorscore','student2','password123',False,'student2@gmail.com','student2'],
+            ['mirrorscore','student3','password123',False,'student3@gmail.com','student3'],
+            ['mirrorscore','teacher','password123',False,'teacher@gmail.com','teacher'],
+            ['mirrorscore','admin','password123',True,'admin@gmail.com','admin'],
         ]
         for method in login_method:
             LoginMethod.objects.create(login_method=method)
@@ -44,6 +44,7 @@ class Command(BaseCommand):
                 last_name = k[1],
                 email = k[4],
                 is_superuser = k[3],
+                is_staff = k[3],
                 username = k[5]
             )
             u.set_password(k[2])
