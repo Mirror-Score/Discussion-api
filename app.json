@@ -1,0 +1,22 @@
+{
+    "name": "Mirror Score Android",
+    "description": "An API for hiring ",
+    "repository": "https://github.com/namantam1/mirrorscore-android",
+    "keywords": ["django", "API", "discussion wall"],
+    "scripts": {
+        "postdeploy": ["python manage.py migrate", "python manage.py mkdb"]
+    },
+    "env": {
+        "SECRET_KEY": {
+            "description": "Django's SECRET_KEY setting",
+            "generator": "secret"
+        }
+    },
+    "addons": ["heroku-postgresql"],
+    "formation": {
+        "web": {
+            "quantity": 1,
+          " size": "Free"
+        }
+    }
+}
